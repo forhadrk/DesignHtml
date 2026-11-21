@@ -8,7 +8,7 @@
 <meta name="description" content="Golden-battered fish, smashed halal burgers and hand-cut chips in Thornlie, WA. Order online for pickup or delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Anton&family=Poppins:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Layout: a fixed WebGL stage behind a dark harbour-night page; hero → sticky "anatomy" scroll scene → chalk-board menu → receipt-style checkout drawer. */
 :root{
@@ -26,6 +26,8 @@
   --sea:#3A8C93;
   --line:rgba(245,240,230,.12);
   --ok:#55B97A;
+  --plum:#2A0F3D;       /* Nefis brand plum */
+  --purple:#7B2FBE;     /* Nefis brand purple */
   --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
   --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -260,6 +262,30 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 .track div.on::before{background:var(--batter)}
 .note{font-size:.84rem;color:var(--muted);background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 
+/* Reel */
+.reel-sec{position:relative;padding-block:110px;background:radial-gradient(55% 60% at 72% 50%,color-mix(in srgb,var(--purple) 45%,transparent),transparent 70%),linear-gradient(180deg,var(--ink),var(--plum) 14%,var(--plum) 86%,var(--ink))}
+.reel-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:center}
+.reel-sec h2{font-size:clamp(2.2rem,5vw,4.2rem);margin:14px 0 6px}
+.reel-sec h2 em{font-style:normal;color:var(--batter)}
+.reel-def{font-family:var(--f-mono);color:var(--muted);margin:0 0 22px}
+.reel-sec p.lead{color:color-mix(in srgb,var(--salt) 75%,transparent);max-width:30rem;margin:0 0 28px}
+.chapters{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:4px;max-width:420px}
+.chapters button{width:100%;display:grid;grid-template-columns:56px 1fr;align-items:baseline;text-align:left;background:transparent;border:0;border-bottom:1px dashed rgba(255,244,224,.14);padding:10px 0;color:color-mix(in srgb,var(--salt) 60%,transparent);transition:color .25s,transform .25s}
+.chapters button span{font-family:var(--f-mono);font-size:.78rem}
+.chapters button.on{color:var(--salt);transform:translateX(6px)}
+.chapters button.on span{color:var(--batter)}
+.phone{width:min(360px,calc(100vw - 32px));border-radius:42px;padding:12px;background:#140720;border:1px solid rgba(255,244,224,.14);box-shadow:0 40px 90px rgba(10,0,20,.55),0 0 0 6px rgba(123,47,190,.25);position:relative}
+.phone canvas{display:block;width:100%;aspect-ratio:9/16;max-width:100%;border-radius:32px;background:var(--plum)}
+.reel-ctrl{display:flex;align-items:center;gap:10px;margin-top:14px;padding:0 4px}
+.reel-ctrl button{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,244,224,.2);background:transparent;display:grid;place-items:center;color:var(--salt)}
+.reel-ctrl button#reelSound{width:auto;padding:0 14px;border-radius:999px;font-size:.78rem;gap:6px;display:inline-flex;align-items:center}
+.reel-ctrl button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple)}
+.reel-bar{flex:1;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.reel-bar i{display:block;width:100%;height:4px;border-radius:4px;background:rgba(255,244,224,.18);overflow:hidden}
+.reel-bar b{display:block;height:100%;background:var(--batter);transform-origin:left;transform:scaleX(0)}
+.reel-ctrl time{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+@media (max-width:900px){.reel-grid{grid-template-columns:1fr;justify-items:center;gap:40px}.reel-copy{justify-self:stretch}}
+
 /* Kitchen */
 .kitchen{padding-block:90px}
 .k-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:26px}
@@ -289,6 +315,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     </a>
     <nav aria-label="Main">
       <a href="#anatomy">The Smasher</a>
+      <a href="#nefis">Our name</a>
       <a href="#menu">Menu</a>
       <a href="#story">Our story</a>
       <a href="#visit">Visit</a>
@@ -351,12 +378,41 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     </div>
   </section>
 
+  <section class="reel-sec" id="nefis">
+    <div class="wrap reel-grid">
+      <div class="reel-copy">
+        <span class="eyebrow">Our name, explained</span>
+        <h2>Nefis <em>(adj.)</em><br>delicious.</h2>
+        <p class="reel-def">/ne·fis/ · Turkish · see also: Thornlie</p>
+        <p class="lead">We named the shop after a promise. Watch it play out one food at a time, then come and taste it.</p>
+        <ol class="chapters">
+          <li><button data-seek="0"><span>0:00</span>The word</button></li>
+          <li><button data-seek="3.5"><span>0:03</span>The Nefis Classic, built layer by layer</button></li>
+          <li><button data-seek="9"><span>0:09</span>Fresh fish, golden chips</button></li>
+          <li><button data-seek="13.5"><span>0:13</span>Save room: Dubai chocolate</button></li>
+          <li><button data-seek="16"><span>0:16</span>Find us on Spencer Rd</button></li>
+        </ol>
+        <a class="btn btn-gold" href="#menu">Order online
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="phone">
+        <canvas id="reel" role="img" aria-label="Animated story: the word Nefis is defined as delicious, a Nefis Classic burger builds layer by layer, battered fish and chips land in a red cone, a Dubai chocolate bar snaps open, and an end card shows the Thornlie address."></canvas>
+        <div class="reel-ctrl">
+          <button id="reelPlay" aria-label="Pause"></button>
+          <div class="reel-bar" id="reelBar" aria-hidden="true"><i><b id="reelFill"></b></i></div>
+          <time id="reelTime">0:00 / 0:20</time>
+          <button id="reelSound" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span>Sound off</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="block story" id="story">
     <div class="wrap story-grid">
       <div>
         <span class="eyebrow">Spencer Road, since day one</span>
         <h2>A proper Aussie chippy, done the halal way.</h2>
-        <p>Nefis means "delicious" in Turkish, and that is the only rule in our kitchen. We batter every fillet the moment you order, smash our burgers on the plate, and season the chips while they're still hissing.</p>
+        <p>Nefis means "delicious" in Turkish, and that is the only rule in our kitchen. We batter fresh hake, snapper and emperor the moment you order, smash our burgers on the plate, and season the chips while they're still hissing.</p>
         <p>Every meat on our menu is halal, so the whole family can order anything on the board.</p>
       </div>
       <div class="pillars">
@@ -485,10 +541,11 @@ const GLYPHS={
   burger:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M16 46c0-16 15-26 34-26s34 10 34 26H16Z" fill="currentColor" fill-opacity=".14"/><path d="M14 54h72M18 60c6 5 10-3 16 1s10-4 16 0 10-4 16 0 10-5 16-1"/><path d="M16 66h68v6c0 6-5 10-11 10H27c-6 0-11-4-11-10v-6Z" fill="currentColor" fill-opacity=".14"/><path d="M36 32l2-2M50 28l2 2M62 33l2-2M44 38l1 2M56 39l1-2" stroke-linecap="round"/></svg>',
   fries:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M34 44 30 14l8-2 4 32M46 42V8h8v34M58 44l6-30 8 2-6 28M26 46l-4-22 7-2 5 22M70 46l6-20 7 3-5 19"/><path d="M22 44h56l-8 44H30l-8-44Z" fill="currentColor" fill-opacity=".14"/><path d="M36 60c4 6 24 6 28 0"/></svg>',
   prawn:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M70 26c-26-6-48 8-48 30 0 14 10 22 22 22 10 0 16-6 16-14 0-6-4-10-10-10" fill="currentColor" fill-opacity=".12"/><path d="M70 26l14-8M70 26l16 2M38 40l4 8M30 50l7 5M30 64l8 2"/><path d="M50 54l-10 12 14-2" /></svg>',
+  choc:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><rect x="16" y="26" width="30" height="50" rx="4" fill="currentColor" fill-opacity=".14" transform="rotate(-8 31 51)"/><rect x="54" y="26" width="30" height="50" rx="4" fill="currentColor" fill-opacity=".14" transform="rotate(8 69 51)"/><path d="M47 30l4 6-4 6 4 6-4 6 4 6-4 6" /></svg>',
   cup:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M28 30h44l-6 58H34l-6-58Z" fill="currentColor" fill-opacity=".14"/><path d="M24 30h52M54 30l8-20h10"/><path d="M31 52h38"/></svg>',
   bowl:'<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M14 46h72c0 20-16 36-36 36S14 66 14 46Z" fill="currentColor" fill-opacity=".14"/><circle cx="34" cy="38" r="7"/><circle cx="50" cy="34" r="8"/><circle cx="66" cy="38" r="7"/></svg>'
 };
-const CATS=[["fish","Fish & Chips"],["burgers","Burgers"],["seafood","Seafood & Sides"],["sweet","Acai & Drinks"]];
+const CATS=[["fish","Fish & Chips"],["burgers","Burgers"],["seafood","Seafood & Sides"],["sweet","Sweets & Drinks"]];
 const MENU=[
   {id:"fc2",cat:"fish",g:"fish",name:"Fish & Chips (2 pc)",desc:"Two battered fillets, chips, lemon and tartare.",price:23.50,tags:["Best seller"],feat:true},
   {id:"fc1",cat:"fish",g:"fish",name:"Fish & Chips (1 pc)",desc:"One fillet with a regular chips.",price:14.90},
@@ -503,12 +560,13 @@ const MENU=[
   {id:"chipsL",cat:"seafood",g:"fries",name:"Chips, Large",desc:"Twice cooked, sea salt or chicken salt.",price:8.50},
   {id:"chipsS",cat:"seafood",g:"fries",name:"Chips, Small",desc:"The perfect side.",price:5.50},
   {id:"pcake",cat:"seafood",g:"fries",name:"Potato Cakes (2)",desc:"Battered potato scallops.",price:4.50},
+  {id:"dubai",cat:"sweet",g:"choc",name:"Dubai Chocolate",desc:"Milk chocolate filled with pistachio cream and crunchy kataifi.",price:12.00,tags:["New"]},
   {id:"acai",cat:"sweet",g:"bowl",name:"Acai Bowl",desc:"Acai, banana, granola, honey drizzle.",price:10.00},
   {id:"shake",cat:"sweet",g:"cup",name:"Thick Shake",desc:"Chocolate, vanilla, strawberry or caramel.",price:8.50},
   {id:"can",cat:"sweet",g:"cup",name:"Soft Drink Can",desc:"Coke, Coke No Sugar, Sprite, Fanta.",price:3.50}
 ];
 const OPTIONS={
-  fish:[{h:"Cooking",type:"radio",items:[["Battered",0],["Grilled",0],["Crumbed",0]]},{h:"Extras",type:"check",items:[["Extra tartare",1],["Chicken salt chips",0],["Add a potato cake",2.25]]}],
+  fish:[{h:"Fish",type:"radio",items:[["Hake",0],["Snapper",0],["Emperor",0]]},{h:"Cooking",type:"radio",items:[["Battered",0],["Grilled",0],["Crumbed",0]]},{h:"Extras",type:"check",items:[["Extra tartare",1],["Chicken salt chips",0],["Add a potato cake",2.25]]}],
   burgers:[{h:"Upgrade",type:"check",items:[["Make it a meal (chips + can)",6.5],["Extra cheese",1.5],["Extra patty",5],["No pickles",0]]}],
   seafood:[{h:"Seasoning",type:"radio",items:[["Sea salt",0],["Chicken salt",0],["No salt",0]]}],
   sweet:[]
@@ -768,6 +826,174 @@ document.addEventListener("click",e=>{
   const c=e.target.closest("[data-copy]");if(c){const v=c.dataset.copy;
     navigator.clipboard?.writeText(v).then(()=>toast("Number copied")).catch(()=>{const r=document.createRange();r.selectNodeContents($("#phoneText"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Number selected, copy it from here")});}
 });
+
+/* ===================== "Nefis means delicious" reel ===================== */
+(function(){
+  const cv=document.getElementById("reel");if(!cv)return;
+  const ctx=cv.getContext("2d");
+  const W=1080,H=1920,DUR=20;
+  const C={plum:"#2A0F3D",purple:"#7B2FBE",batter:"#F5A623",chip:"#FFD45C",cream:"#FFF4E0",tomato:"#E8402F",lettuce:"#5CB85C"};
+  const SCENES=[{s:0,bg:C.plum,name:"Definition"},{s:3.5,bg:C.plum,name:"The Nefis Classic"},{s:9,bg:C.chip,name:"Fish & chips"},{s:13.5,bg:C.purple,name:"Something sweet"},{s:16,bg:C.plum,name:"Find us"}];
+  const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+  const prog=(t,s,d)=>clamp((t-s)/d);
+  const back=(x,c=1.70158)=>{const c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+  const elastic=x=>x<=0?0:x>=1?1:Math.pow(2,-10*x)*Math.sin((x*10-.75)*2*Math.PI/3)+1;
+  const inOut=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+  const easeIn=x=>x*x*x;
+  const DF='"Anton","Impact",sans-serif',BF='"Poppins","DM Sans",sans-serif';
+  const OUT=C.plum;
+
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h)}
+  function text(str,x,y,font,color,{align="center",alpha=1,scale=1,ls=0,stroke=null}={}){
+    if(alpha<=0)return;ctx.save();ctx.globalAlpha*=alpha;ctx.translate(x,y);ctx.scale(scale,scale);
+    ctx.font=font;ctx.textAlign=align;ctx.textBaseline="middle";if("letterSpacing" in ctx)ctx.letterSpacing=ls+"px";
+    if(stroke){ctx.lineWidth=stroke[1];ctx.strokeStyle=stroke[0];ctx.lineJoin="round";ctx.strokeText(str,0,0)}
+    ctx.fillStyle=color;ctx.fillText(str,0,0);ctx.restore();
+  }
+  function squash(t,land,k=.16){const d=t-land;if(d<=0)return 0;return Math.sin(d*18)*Math.exp(-d*7)*k}
+
+  /* ---------- food pieces (origin: bottom-centre) ---------- */
+  function heel(){rr(-310,-110,620,110,[22,22,60,60]);ctx.fillStyle="#E89A2C";ctx.fill();rr(-310,-110,620,26,[22,22,0,0]);ctx.fillStyle="#FFF0C9";ctx.fill();rr(-310,-110,620,110,[22,22,60,60]);ctx.lineWidth=7;ctx.strokeStyle=OUT;ctx.stroke()}
+  function patty(){rr(-330,-115,660,115,56);ctx.fillStyle="#5B2E1B";ctx.fill();ctx.lineWidth=7;ctx.strokeStyle=OUT;ctx.stroke();
+    ctx.fillStyle="#7A4128";for(let i=0;i<14;i++){ctx.beginPath();ctx.ellipse(-270+i*42,-78+(i%3)*22,12,6,0,0,7);ctx.fill()}}
+  function cheese(drip){ctx.beginPath();ctx.moveTo(-320,-28);ctx.lineTo(320,-28);ctx.lineTo(320,0);
+    [[230,1],[80,.7],[-70,1.1],[-220,.8]].forEach(([x,k])=>{ctx.lineTo(x+40,0);ctx.quadraticCurveTo(x+18,drip*70*k,x,drip*80*k);ctx.quadraticCurveTo(x-18,drip*70*k,x-40,0)});
+    ctx.lineTo(-320,0);ctx.closePath();ctx.fillStyle="#FFC93C";ctx.fill();ctx.lineWidth=6;ctx.strokeStyle=OUT;ctx.stroke()}
+  function lettuce(){ctx.beginPath();ctx.moveTo(-350,-10);for(let x=-350;x<=350;x+=10)ctx.lineTo(x,-34-Math.sin(x/22)*10);for(let x=350;x>=-350;x-=10)ctx.lineTo(x,4+Math.sin(x/18)*9);ctx.closePath();ctx.fillStyle=C.lettuce;ctx.fill();ctx.lineWidth=6;ctx.strokeStyle=OUT;ctx.stroke()}
+  function tomato(){[-150,150].forEach(x=>{ctx.beginPath();ctx.ellipse(x,-22,178,26,0,0,7);ctx.fillStyle=C.tomato;ctx.fill();ctx.lineWidth=6;ctx.strokeStyle=OUT;ctx.stroke();ctx.beginPath();ctx.ellipse(x,-24,120,13,0,0,7);ctx.fillStyle="#FF7A63";ctx.fill()})}
+  const SEEDS=[[-150,-190,.3],[-60,-235,-.2],[40,-245,.4],[140,-205,-.4],[-210,-120,.6],[220,-130,-.6],[-90,-150,.1],[20,-175,-.3],[110,-140,.5],[-160,-60,.2],[170,-70,-.2],[-20,-95,.7]];
+  function crown(){ctx.beginPath();ctx.moveTo(-320,-10);ctx.ellipse(0,-22,322,262,0,Math.PI,2*Math.PI);ctx.lineTo(320,-10);ctx.quadraticCurveTo(320,0,300,0);ctx.lineTo(-300,0);ctx.quadraticCurveTo(-320,0,-320,-10);ctx.closePath();
+    const g=ctx.createLinearGradient(0,-290,0,0);g.addColorStop(0,"#FFB938");g.addColorStop(1,"#E0841A");ctx.fillStyle=g;ctx.fill();ctx.lineWidth=7;ctx.strokeStyle=OUT;ctx.stroke();
+    ctx.beginPath();ctx.ellipse(-120,-190,90,40,-.5,0,7);ctx.fillStyle="rgba(255,244,224,.35)";ctx.fill();
+    ctx.fillStyle=C.cream;SEEDS.forEach(([x,y,r])=>{ctx.beginPath();ctx.ellipse(x,y,13,7,r,0,7);ctx.fill()})}
+  const LAYERS=[[heel,104],[patty,108],[c=>cheese(c),22],[lettuce,34],[tomato,40],[crown,0]];
+  function burger(t,times){
+    let y=0;LAYERS.forEach(([fn,h],i)=>{
+      const land=times[i],a=prog(t,land-.42,.42);if(a<=0){y-=h;return}
+      const fall=(1-easeIn(a))*1300,sq=squash(t,land,i===5?.2:.14);
+      ctx.save();ctx.translate(0,y-fall);ctx.scale(1+sq*.6,1-sq);fn(i===2?back(prog(t,land,.8)):0);ctx.restore();y-=h});
+  }
+  function chip(){rr(-19,-270,38,270,8);ctx.fillStyle=C.batter;ctx.fill();ctx.lineWidth=6;ctx.strokeStyle=OUT;ctx.stroke();rr(-7,-255,9,240,4);ctx.fillStyle="#FFD98A";ctx.fill()}
+  function cone(t,chipStart){
+    for(let j=0;j<9;j++){const land=chipStart+j*.12,a=prog(t,land-.35,.35);if(a<=0)continue;
+      const x=(j-4)*40,yTop=-470+(j%3)*44+Math.abs(j-4)*14,fall=(1-easeIn(a))*1400,sq=squash(t,land,.1);
+      ctx.save();ctx.translate(x,yTop+270-fall);ctx.rotate((j-4)*.07);ctx.scale(1+sq*.4,1-sq);chip();ctx.restore()}
+    ctx.beginPath();ctx.moveTo(-230,-250);ctx.lineTo(230,-250);ctx.lineTo(150,140);ctx.lineTo(-150,140);ctx.closePath();ctx.fillStyle=C.tomato;ctx.fill();ctx.lineWidth=8;ctx.strokeStyle=OUT;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(-214,-170);ctx.lineTo(214,-170);ctx.lineTo(204,-122);ctx.lineTo(-204,-122);ctx.closePath();ctx.fillStyle=C.cream;ctx.fill();
+    text("NEFIS",0,-30,`86px ${DF}`,C.cream,{ls:6});
+  }
+  function fish(){
+    ctx.beginPath();ctx.moveTo(-250,0);ctx.bezierCurveTo(-240,-120,120,-140,200,-30);ctx.lineTo(300,-110);ctx.lineTo(280,0);ctx.lineTo(300,110);ctx.lineTo(200,30);ctx.bezierCurveTo(120,140,-240,120,-250,0);ctx.closePath();
+    ctx.fillStyle="#E9952A";ctx.fill();ctx.lineWidth=8;ctx.strokeStyle=OUT;ctx.lineJoin="round";ctx.stroke();
+    ctx.fillStyle="#FFC15A";[[-170,-40,26],[-90,-70,30],[0,-72,26],[90,-55,22],[-120,30,22],[-30,20,30],[70,15,24],[-200,10,16]].forEach(([x,y,r])=>{ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()});
+  }
+  function lemon(){ctx.beginPath();ctx.arc(0,0,120,Math.PI,2*Math.PI);ctx.closePath();ctx.fillStyle="#FFF4C2";ctx.fill();ctx.lineWidth=8;ctx.strokeStyle=OUT;ctx.stroke();
+    ctx.beginPath();ctx.arc(0,0,96,Math.PI,2*Math.PI);ctx.closePath();ctx.fillStyle="#FFE14D";ctx.fill();
+    ctx.strokeStyle="#FFF4C2";ctx.lineWidth=6;for(let k=1;k<5;k++){const a=Math.PI+k*Math.PI/5;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(Math.cos(a)*92,Math.sin(a)*92);ctx.stroke()}}
+  function star(x,y,s){if(s<=0)return;ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.beginPath();for(let i=0;i<8;i++){const r=i%2?10:34,a=i*Math.PI/4;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath();ctx.fillStyle="#fff";ctx.fill();ctx.restore()}
+  function chocHalf(side){
+    const x0=side<0?-280:0;rr(x0,-170,280,340,side<0?[26,0,0,26]:[0,26,26,0]);ctx.fillStyle="#4A2412";ctx.fill();ctx.lineWidth=8;ctx.strokeStyle=OUT;ctx.stroke();
+    ctx.fillStyle="#653419";for(let r=0;r<3;r++)for(let c=0;c<2;c++){rr(x0+24+c*128,-146+r*108,108,88,10);ctx.fill()}
+  }
+  function chocEdge(side){ctx.beginPath();ctx.moveTo(side*34,-170);for(let i=0;i<=10;i++)ctx.lineTo(i%2?8:-8,-170+i*34);ctx.lineTo(side*34,170);ctx.closePath();ctx.fillStyle="#8BC34A";ctx.fill();
+    ctx.fillStyle="#DDEFB8";for(let i=0;i<7;i++){ctx.beginPath();ctx.arc(side*18,-140+i*46,5,0,7);ctx.fill()}}
+
+  /* ---------- scene backgrounds ---------- */
+  function backdrop(i,t){
+    ctx.fillStyle=SCENES[i].bg;ctx.fillRect(0,0,W,H);
+    const g=ctx.createRadialGradient(540,1120,40,540,1120,820);g.addColorStop(0,i===2?"rgba(123,47,190,.28)":i===3?"rgba(255,244,224,.18)":"rgba(123,47,190,.62)");g.addColorStop(1,"rgba(123,47,190,0)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle=i===2?"rgba(42,15,61,.18)":"rgba(255,244,224,.22)";ctx.lineWidth=4;
+    for(let k=0;k<34;k++){const sp=110+(k*53%150),r=8+(k*7%22),x=(k*197%1080)+Math.sin(t*2+k)*14,y=H+60-((t*sp+k*311)%(H+160));ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.stroke()}
+  }
+
+  /* ---------- scenes ---------- */
+  function s1(t){
+    const L="NEFIS";ctx.font=`340px ${DF}`;const ws=[...L].map(c=>ctx.measureText(c).width),tot=ws.reduce((a,b)=>a+b,0)+4*14;let x=540-tot/2;
+    [...L].forEach((c,i)=>{const a=prog(t,.15+i*.2,.45);if(a>0){const sc=2.4-1.4*back(a,2.4);text(c,x+ws[i]/2,860,`340px ${DF}`,C.cream,{alpha:clamp(a*3),scale:sc})}x+=ws[i]+14});
+    const line="/ne·fis/  adj.",n=Math.floor(clamp((t-1.3)*18,0,line.length));
+    text(line.slice(0,n)+(n<line.length&&Math.floor(t*4)%2?"|":""),540,1040,`italic 500 60px ${BF}`,C.cream,{alpha:.88});
+    const p=prog(t,2.3,.8);if(p>0){text("“delicious”",540,1190,`150px ${DF}`,C.chip,{scale:elastic(p)});
+      ctx.save();ctx.globalAlpha=clamp(p*2);ctx.strokeStyle=C.batter;ctx.lineWidth=10;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(330,1290);ctx.quadraticCurveTo(540,1330-40*p,330+420*inOut(clamp(p*1.4)),1290);ctx.stroke();ctx.restore()}
+  }
+  const B_TIMES=[4,4.5,5,5.5,6,6.5];
+  function s2(t){
+    const a=back(prog(t,3.6,.5));text("THE NEFIS CLASSIC",540,380+60*(1-a),`132px ${DF}`,C.cream,{alpha:prog(t,3.6,.25),ls:2});
+    const z=1+.12*inOut(prog(t,4,5));ctx.save();ctx.translate(540,1150);ctx.scale(z,z);ctx.translate(-540,-1150);
+    ctx.save();ctx.translate(540,1420);ctx.fillStyle="rgba(0,0,0,.25)";ctx.beginPath();ctx.ellipse(0,10,360*clamp((t-3.7)*2),34,0,0,7);ctx.fill();burger(t,B_TIMES);ctx.restore();ctx.restore();
+    const h=prog(t,7.2,.4);if(h>0)text("100% halal beef · smashed to order",540,1700,`600 46px ${BF}`,C.cream,{alpha:h*.9});
+  }
+  function s3(t){
+    text("FRESH FISH.",540,330,`150px ${DF}`,C.plum,{scale:2-back(prog(t,9.3,.4),2.2),alpha:prog(t,9.3,.12)});
+    text("GOLDEN CHIPS.",540,480,`150px ${DF}`,C.plum,{scale:2-back(prog(t,9.65,.4),2.2),alpha:prog(t,9.65,.12)});
+    ctx.save();ctx.translate(650,1560);ctx.scale(.95,.95);cone(t,10.1);ctx.restore();
+    const f=prog(t,9.6,.55);if(f>0){const d=t-9.6;ctx.save();ctx.translate(-420+(330+420)*back(f),900);ctx.rotate(Math.sin(d*6)*.45*Math.exp(-d*2.2)-.12);ctx.translate(0,150);ctx.scale(.9,.9);fish();ctx.restore();
+      [[150,780],[520,760],[180,1110],[560,1060],[360,700]].forEach(([x,y],k)=>star(x,y,Math.max(0,Math.sin((t-10)*5+k*1.3))*(t>10?1:0)))}
+    const l=prog(t,11.8,.7);if(l>0){ctx.save();ctx.translate(890,1320);ctx.rotate(-.5);ctx.scale(elastic(l)*.8,elastic(l)*.8);lemon();ctx.restore()}
+    const s=prog(t,11.3,.4);text("Hake · Snapper · Emperor",540,1780+40*(1-back(s)),`600 56px ${BF}`,C.plum,{alpha:s});
+  }
+  function s4(t){
+    text("SAVE ROOM.",540,420,`180px ${DF}`,C.cream,{scale:2-back(prog(t,13.8,.4),2.2),alpha:prog(t,13.8,.12)});
+    const e=prog(t,13.9,.5);if(e>0){const sp=back(prog(t,14.7,.45));ctx.save();ctx.translate(540,1060);ctx.scale(back(e),back(e));ctx.rotate(-.06);
+      [-1,1].forEach(side=>{ctx.save();ctx.translate(side*sp*110,sp*20);ctx.rotate(side*sp*.22);chocHalf(side);if(sp>0)chocEdge(side);ctx.restore()});
+      const d=t-14.7;if(d>0&&d<1.4){ctx.fillStyle="#8BC34A";for(let k=0;k<14;k++){const vx=Math.cos(k*2.4)*(260+k*20),vy=-380-(k*37%260);ctx.save();ctx.globalAlpha=clamp(1.4-d);ctx.translate(vx*d,vy*d+900*d*d);ctx.rotate(k+d*6);ctx.fillStyle=k%3?"#8BC34A":"#5C2E18";ctx.fillRect(-9,-9,18,18);ctx.restore()}}
+      ctx.restore()}
+    const s=prog(t,15,.4);text("Dubai chocolate · Acai",540,1560+40*(1-back(s)),`600 60px ${BF}`,C.cream,{alpha:s});
+  }
+  function s5(t){
+    const items=[[250,16.3,()=>{ctx.scale(.36,.36);burger(99,B_TIMES)}],[540,16.55,()=>{ctx.scale(.36,.36);ctx.translate(0,-140);cone(99,0)}],[830,16.8,()=>{ctx.scale(.42,.42);ctx.translate(0,-120);fish()}]];
+    items.forEach(([x,st,fn])=>{const a=prog(t,st,.5);if(a<=0)return;const sq=squash(t,st+.5,.18);ctx.save();ctx.translate(x,760-(1-back(a))*900);ctx.scale(1+sq*.5,1-sq);fn();ctx.restore()});
+    text("NEFIS",540,1060,`300px ${DF}`,C.cream,{scale:elastic(prog(t,17,.8)),ls:8});
+    text("FISH · CHIPS & BURGERS",540,1200,`600 46px ${BF}`,C.chip,{alpha:prog(t,17.2,.4),ls:8});
+    const h=prog(t,17.5,.6);if(h>0){ctx.save();ctx.translate(540,1305);ctx.scale(elastic(h),elastic(h));rr(-150,-42,300,84,42);ctx.fillStyle=C.lettuce;ctx.fill();text("✓ HALAL",0,2,`700 44px ${BF}`,C.cream,{ls:4});ctx.restore()}
+    const ad=prog(t,17.8,.4);text("Shop 20, 318 Spencer Rd",540,1430,`500 44px ${BF}`,C.cream,{alpha:ad*.9});text("Thornlie WA",540,1490,`500 44px ${BF}`,C.cream,{alpha:ad*.9});
+    const c=prog(t,18.2,.6);if(c>0){const pulse=1+.04*Math.max(0,Math.sin(t*Math.PI*4));ctx.save();ctx.translate(540,1630);ctx.scale(elastic(c)*pulse,elastic(c)*pulse);rr(-260,-62,520,124,62);ctx.fillStyle=C.batter;ctx.fill();text("ORDER ONLINE",0,4,`76px ${DF}`,C.plum,{ls:3});ctx.restore()}
+    text("Nefis (adj.): delicious. See also: Thornlie.",540,1790,`italic 500 36px ${BF}`,C.cream,{alpha:prog(t,18.6,.5)*.75});
+  }
+  const DRAW=[s1,s2,s3,s4,s5];
+  const sceneAt=t=>{let i=0;SCENES.forEach((s,k)=>{if(t>=s.s)i=k});return i};
+  function full(i,t){backdrop(i,t);DRAW[i](t)}
+  function render(t){
+    const i=sceneAt(t),st=SCENES[i].s,w=prog(t,st,.5);
+    ctx.save();ctx.scale(cv.width/W,cv.height/H);
+    if(i>0&&w<1){full(i-1,st-.001);ctx.save();ctx.beginPath();ctx.arc(540,1100,inOut(w)*1300,0,7);ctx.clip();full(i,t);ctx.restore()}else full(i,t);
+    ctx.restore();
+  }
+
+  /* ---------- sound (WebAudio, starts only on click) ---------- */
+  let ac=null,master=null,noiseBuf=null,sizzle=null,soundOn=false;
+  const LANDS=[...B_TIMES,...Array.from({length:9},(_,j)=>10.1+j*.12).filter((_,j)=>j%3===0),11.8,14.7,16.8,17.5,18.2];
+  const WHOOSH=[3.5,9,13.5,16];
+  function initAudio(){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.5;master.connect(ac.destination);
+    noiseBuf=ac.createBuffer(1,ac.sampleRate,ac.sampleRate);const d=noiseBuf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}
+  function tone(f0,f1,dur,vol){const o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime;o.frequency.setValueAtTime(f0,n);o.frequency.exponentialRampToValueAtTime(f1,n+dur);g.gain.setValueAtTime(vol,n);g.gain.exponentialRampToValueAtTime(.001,n+dur);o.connect(g).connect(master);o.start(n);o.stop(n+dur)}
+  function noise(dur,vol,type,f0,f1){const s=ac.createBufferSource(),fl=ac.createBiquadFilter(),g=ac.createGain(),n=ac.currentTime;s.buffer=noiseBuf;fl.type=type;fl.frequency.setValueAtTime(f0,n);if(f1)fl.frequency.exponentialRampToValueAtTime(f1,n+dur);g.gain.setValueAtTime(vol,n);g.gain.exponentialRampToValueAtTime(.001,n+dur);s.connect(fl).connect(g).connect(master);s.start(n);s.stop(n+dur)}
+  function events(a,b){if(!soundOn||!ac||b<a)return;const hit=x=>x>a&&x<=b;
+    for(let k=Math.ceil(a*2);k/2<=b;k++){const x=k/2;if(!hit(x))continue;tone(140,42,.16,.9);if(k%2===1)noise(.09,.35,"highpass",1800);if(k%4===2)tone(55,50,.25,.35)}
+    LANDS.forEach(x=>hit(x)&&tone(95,48,.22,.8));WHOOSH.forEach(x=>hit(x-.1)&&noise(.45,.35,"bandpass",300,4000));
+    const wantSizzle=b>9.5&&b<13.4;if(wantSizzle&&!sizzle){const s=ac.createBufferSource(),fl=ac.createBiquadFilter(),g=ac.createGain();s.buffer=noiseBuf;s.loop=true;fl.type="highpass";fl.frequency.value=5000;g.gain.value=.05;s.connect(fl).connect(g).connect(master);s.start();sizzle=s}
+    if(!wantSizzle&&sizzle){sizzle.stop();sizzle=null}}
+
+  /* ---------- player ---------- */
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t=reduce?8.95:0,playing=!reduce,inView=true,last=performance.now();
+  const playBtn=document.getElementById("reelPlay"),bar=document.getElementById("reelBar"),fill=document.getElementById("reelFill"),clock=document.getElementById("reelTime"),snd=document.getElementById("reelSound"),chapters=[...document.querySelectorAll("[data-seek]")];
+  function size(){const r=cv.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.width*dpr*16/9);render(t)}
+  function ui(){fill.style.transform=`scaleX(${t/DUR})`;clock.textContent=`0:${String(Math.floor(t)).padStart(2,"0")} / 0:20`;
+    playBtn.setAttribute("aria-label",playing?"Pause":"Play");playBtn.innerHTML=playing?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>';
+    const i=sceneAt(t);chapters.forEach((c,k)=>c.classList.toggle("on",k===i))}
+  function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;
+    if(playing&&inView){const prev=t;t+=dt;if(t>=DUR){t-=DUR;events(prev,DUR);events(-0.001,t)}else events(prev,t);render(t);ui()}
+    requestAnimationFrame(loop)}
+  playBtn.onclick=()=>{playing=!playing;if(!playing&&sizzle){sizzle.stop();sizzle=null}ui()};
+  snd.onclick=()=>{try{if(!ac)initAudio();ac.resume();soundOn=!soundOn;snd.setAttribute("aria-pressed",soundOn);snd.querySelector("span").textContent=soundOn?"Sound on":"Sound off";if(!soundOn&&sizzle){sizzle.stop();sizzle=null}if(soundOn&&!playing){playing=true;ui()}}catch(e){snd.hidden=true}};
+  function seek(x){t=clamp(x,0,DUR-.01);if(sizzle){sizzle.stop();sizzle=null}render(t);ui()}
+  bar.addEventListener("pointerdown",e=>{const r=bar.getBoundingClientRect();seek((e.clientX-r.left)/r.width*DUR)});
+  chapters.forEach(c=>c.addEventListener("click",()=>{seek(+c.dataset.seek);playing=true;ui()}));
+  new IntersectionObserver(es=>{inView=es[0].isIntersecting;last=performance.now()},{threshold:.15}).observe(cv);
+  addEventListener("resize",size);
+  size();ui();requestAnimationFrame(loop);
+  if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load(`100px ${DF}`),document.fonts.load(`600 40px ${BF}`),document.fonts.load(`italic 500 40px ${BF}`)]).then(()=>render(t)).catch(()=>{})}
+})();
 
 /* init */
 $("#yr").textContent=new Date().getFullYear();
